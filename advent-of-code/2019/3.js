@@ -27,7 +27,6 @@ export function compute(...memory) {
             }
 
             case 99: {
-                console.log(JSON.stringify(state.memory));
                 return state.memory;
             }
         }
