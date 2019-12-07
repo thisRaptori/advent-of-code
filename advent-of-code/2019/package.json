@@ -1,13 +1,22 @@
 {
   "dependencies": {
+    "@babel/plugin-transform-runtime": "^7.7.5",
     "@babel/preset-env": "^7.7.5",
+    "@babel/runtime": "^7.7.5",
     "babel-jest": "^24.9.0",
     "jest": "^24.9.0"
   },
   "babel": {
     "presets": [
       "@babel/preset-env"
-    ]
+    ],
+    "env": {
+      "test": {
+        "plugins": [
+          "@babel/plugin-transform-runtime"
+        ]
+      }
+    }
   },
   "jest": {
     "transform": {

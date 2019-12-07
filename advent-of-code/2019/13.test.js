@@ -101,6 +101,6 @@ describe("compute", () => {
 
 describe("findHighestOutput", () => {
   it("should return the highest output", () => {
-    expect(findHighestOutput(...input)).toBe();
+    expect(findHighestOutput(...input)).toBe(11828);
   });
 });
