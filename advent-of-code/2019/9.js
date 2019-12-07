@@ -64,7 +64,6 @@ export const compute = (...memory) => input => {
             }
 
             default: {
-                console.log(opcode)
                 throw new Error('invalid opcode');
             }
         }
