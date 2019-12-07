@@ -1,12 +1,12 @@
 {
   "dependencies": {
+    "@babel/preset-env": "^7.7.5",
     "babel-jest": "^24.9.0",
-    "babel-preset-env": "^1.7.0",
     "jest": "^24.9.0"
   },
   "babel": {
     "presets": [
-      "env"
+      "@babel/preset-env"
     ]
   },
   "jest": {
