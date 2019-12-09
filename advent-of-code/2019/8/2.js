@@ -1,4 +1,4 @@
-import input from "./15-input";
+import input from "./input";
 
 const pixels = input.split("");
 const canvas = document.createElement("canvas");

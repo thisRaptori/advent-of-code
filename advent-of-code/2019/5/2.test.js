@@ -1,5 +1,5 @@
-import { compute } from "./10";
-import input from "./10-input";
+import { compute } from "./2";
+import input from "./input";
 
 describe("compute", () => {
   it("should work for the position mode examples", () => {

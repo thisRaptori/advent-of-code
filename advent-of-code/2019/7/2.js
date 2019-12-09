@@ -54,6 +54,11 @@ export const compute = (...memory) => {
 
         // input
         case 3: {
+          if (!state.input.length) {
+            state.continue = false;
+            break;
+          }
+
           const target = state.memory[state.pointer + 1];
 
           state.memory[target] = state.input.shift();
@@ -67,7 +72,6 @@ export const compute = (...memory) => {
 
           state.output = value;
           state.pointer += 2;
-          state.continue = false;
           state.listeners.forEach(next => next(value));
           break;
         }
@@ -171,7 +175,6 @@ export const runAmplifiers = (...memory) => (...phases) => {
     new Promise(resolve => {
       amplifiers[0].next(...input);
       amplifiers[amplifiers.length - 1].onComplete(resolve);
-      amplifiers[amplifiers.length - 1].start();
     });
 };
 

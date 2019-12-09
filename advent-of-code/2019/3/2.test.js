@@ -1,6 +1,5 @@
-import { findClosestIntersection, findIntersections, walkPath } from "./6";
-import a from "./5-input-a";
-import b from "./5-input-b";
+import { findClosestIntersection, findIntersections, walkPath } from "./2";
+import { a, b } from "./input";
 
 describe("walkPath", () => {
   const path1 = ["R75", "D30", "R83", "U83", "L12", "D49", "R71", "U7", "L72"];

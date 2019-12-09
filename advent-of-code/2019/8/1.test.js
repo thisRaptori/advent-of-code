@@ -1,5 +1,5 @@
-import { chunk, count, flatten, pivot, smallest, verify } from "./15";
-import input from "./15-input";
+import { chunk, count, flatten, pivot, smallest, verify } from "./1";
+import input from "./input";
 
 describe("chunk", () => {
   it("should chunk an array", () => {

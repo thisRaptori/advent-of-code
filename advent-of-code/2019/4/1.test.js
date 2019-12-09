@@ -1,4 +1,4 @@
-import { checkNumber, validatePassword } from "./7";
+import { checkNumber, validatePassword } from "./1";
 
 describe("validatePassword", () => {
   it("should work with example data", () => {

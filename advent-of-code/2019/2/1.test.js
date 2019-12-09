@@ -1,5 +1,5 @@
-import { compute } from "./3";
-import input from "./3-input";
+import { compute } from "./1";
+import input from "./input";
 
 describe("compute", () => {
   it("should pass examples", () => {

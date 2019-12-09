@@ -1,5 +1,5 @@
 import { countFuel } from "./2";
-import input from "./1-input";
+import input from "./input";
 
 describe("countFuel", () => {
   it("should pass examples", () => {

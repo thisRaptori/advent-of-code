@@ -1,5 +1,5 @@
-import { countOrbits } from "./11";
-import input from "./11-input";
+import { countOrbits } from "./1";
+import input from "./input";
 
 describe("countOrbits", () => {
   it("should count the orbits", () => {

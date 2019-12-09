@@ -1,5 +1,5 @@
-import { compute } from "./9";
-import input from "./9-input";
+import { compute } from "./1";
+import input from "./input";
 
 describe("compute", () => {
   it("should work for identity instructions", () => {

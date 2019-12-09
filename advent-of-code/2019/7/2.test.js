@@ -1,5 +1,5 @@
-import { findHighestOutput, runAmplifiers } from "./14";
-import input from "./13-input";
+import { findHighestOutput, runAmplifiers } from "./2";
+import input from "./input";
 
 describe("compute", () => {
   it("should run the examples", async () => {

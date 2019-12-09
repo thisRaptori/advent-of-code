@@ -1,5 +1,5 @@
-import { getDistance, getPaths } from "./12";
-import input from "./11-input";
+import { getDistance, getPaths } from "./2";
+import input from "./input";
 
 describe("getPaths", () => {
   it("should get all the paths", () => {
