@@ -19,9 +19,8 @@ export const compute = (...memory) => {
     return state.memory[index];
   };
 
-  const mapModes = process => (_modes, count) => {
+  const mapModes = process => (modes, count) => {
     const output = [];
-    const modes = _modes.split("").reverse();
 
     for (let i = count; i > 0; i--) {
       let value;
@@ -29,12 +28,12 @@ export const compute = (...memory) => {
       const address = getMemoryAt(index);
 
       switch (modes[i - 1]) {
-        case "1":
-          value = process[1](address);
-          break;
-
         case "2":
           value = process[2](address + state.relativeBase);
+          break;
+
+        case "1":
+          value = process[1](address);
           break;
 
         default:
@@ -66,7 +65,10 @@ export const compute = (...memory) => {
     do {
       const code = getMemoryAt(state.pointer).toString();
       const opcode = parseInt(code.substr(-2), 10);
-      const modes = code.substr(0, code.length - 2);
+      const modes = code
+        .substr(0, code.length - 2)
+        .split("")
+        .reverse();
 
       switch (opcode) {
         // add
