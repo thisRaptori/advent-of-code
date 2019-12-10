@@ -1,3 +1,5 @@
+const identity = a => a;
+
 export const compute = (...memory) => {
   const state = {
     input: [],
@@ -17,59 +19,46 @@ export const compute = (...memory) => {
     return state.memory[index];
   };
 
-  const getIndexes = (_modes, count) => {
-    const indexes = [];
+  const mapModes = process => (_modes, count) => {
+    const output = [];
     const modes = _modes.split("").reverse();
 
-    for (let i = 0; i < count; i++) {
+    for (let i = count; i > 0; i--) {
       let value;
-      const index = state.pointer + i + 1;
+      const index = state.pointer + i;
       const address = getMemoryAt(index);
 
-      switch (modes[i]) {
-        case "2":
-          value = address + state.relativeBase;
-          break;
-
-        default:
-          value = address;
-          break;
-      }
-
-      indexes.push(value);
-    }
-
-    return indexes;
-  };
-
-  const getArgs = (_modes, count) => {
-    const args = [];
-    const modes = _modes.split("").reverse();
-
-    for (let i = 0; i < count; i++) {
-      let value;
-      const index = state.pointer + i + 1;
-      const address = getMemoryAt(index);
-
-      switch (modes[i]) {
+      switch (modes[i - 1]) {
         case "1":
-          value = address;
+          value = process[1](address);
           break;
 
         case "2":
-          value = getMemoryAt(address + state.relativeBase);
+          value = process[2](address + state.relativeBase);
           break;
 
         default:
-          value = getMemoryAt(address);
+          value = process[0](address);
           break;
       }
 
-      args.push(value);
+      output.unshift(value);
     }
 
-    return args;
+    return output;
   };
+
+  const getIndexes = mapModes({
+    0: identity,
+    1: identity,
+    2: identity
+  });
+
+  const getArgs = mapModes({
+    0: getMemoryAt,
+    1: identity,
+    2: getMemoryAt
+  });
 
   const start = () => {
     state.continue = true;
