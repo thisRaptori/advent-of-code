@@ -30,9 +30,15 @@ describe("compute", () => {
     expect(await getOutput(interpreter)).toBe(1125899906842624);
   });
 
-  it("should pass the actual input", async () => {
+  it("should pass the test mode", async () => {
     const interpreter = compute(...input);
     interpreter.push(1);
     expect(await getOutput(interpreter)).toBe(3013554615);
+  });
+
+  it("should output the coordinates", async () => {
+    const interpreter = compute(...input);
+    interpreter.push(2);
+    expect(await getOutput(interpreter)).toBe(50158);
   });
 });
