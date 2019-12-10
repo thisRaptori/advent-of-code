@@ -3,7 +3,7 @@ function countVisibleAsteroids(asteroidField, x, y) {
   for (let y2 = 0; y2 < asteroidField.length; y2++) {
     for (let x2 = 0; x2 < asteroidField[0].length; x2++) {
       if (asteroidField[y2][x2] && !(x === x2 && y === y2)) {
-        const angle = Math.atan2((y2 - y), (x2 - x)) * 180 / Math.PI
+        const angle = (Math.atan2(y2 - y, x2 - x) * 180) / Math.PI;
         map[angle] = true;
       }
     }
