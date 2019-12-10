@@ -1,7 +1,9 @@
+const loop = (length, fn) => Array.from({ length }, (_, i) => fn(i));
+
 function getLinesOfSight(asteroidField, x, y) {
   const linesOfSight = {};
-  for (let y2 = 0; y2 < asteroidField.length; y2++) {
-    for (let x2 = 0; x2 < asteroidField[0].length; x2++) {
+  loop(asteroidField.length, y2 => {
+    loop(asteroidField[0].length, x2 => {
       if (asteroidField[y2][x2] && !(x === x2 && y === y2)) {
         const angle = (Math.atan2(y2 - y, x2 - x) * 180) / Math.PI + 180;
         const distance = Math.hypot(y2 - y, x2 - x);
@@ -10,8 +12,8 @@ function getLinesOfSight(asteroidField, x, y) {
         }
         linesOfSight[angle].push([x2, y2, distance]);
       }
-    }
-  }
+    });
+  });
   return linesOfSight;
 }
 
@@ -19,8 +21,8 @@ function parseInput(input) {
   return input.split(/[\r\n]/).map(line => line.split("").map(c => c === "#"));
 }
 
-function sortNumbers(array) {
-  return array.sort((a, b) => {
+function sortNumbers(numbers) {
+  return numbers.sort((a, b) => {
     const intA = parseFloat(a);
     const intB = parseFloat(b);
 
@@ -28,6 +30,21 @@ function sortNumbers(array) {
     if (intA > intB) return 1;
     return 0;
   });
+}
+
+function sortByDistance(locations) {
+  return locations.sort(([, , distanceA], [, , distanceB]) => {
+    if (distanceA < distanceB) return -1;
+    if (distanceA > distanceB) return 1;
+    return 0;
+  });
+}
+
+function mapValues(object, fn) {
+  return Object.entries(object).reduce((acc, [key, value]) => {
+    acc[key] = fn(value);
+    return acc;
+  }, {});
 }
 
 function getNorthIndex(linesOfSight) {
@@ -39,16 +56,10 @@ function getNorthIndex(linesOfSight) {
 export function destroyAsteroids(input, location) {
   const asteroidField = parseInput(input);
 
-  const linesOfSight = Object.entries(
-    getLinesOfSight(asteroidField, ...location)
-  ).reduce((acc, [key, value]) => {
-    acc[key] = value.sort(([, , distanceA], [, , distanceB]) => {
-      if (distanceA < distanceB) return -1;
-      if (distanceA > distanceB) return 1;
-      return 0;
-    });
-    return acc;
-  }, {});
+  const linesOfSight = mapValues(
+    getLinesOfSight(asteroidField, ...location),
+    sortByDistance
+  );
 
   let index = getNorthIndex(linesOfSight);
   const output = [];
