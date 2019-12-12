@@ -31,9 +31,9 @@ function trackMoon(position) {
 
     // prettier-ignore
     state.position = [
-        xP + xV,
-        yP + yV,
-        zP + zV
+      xP + xV,
+      yP + yV,
+      zP + zV
     ];
   }
 
@@ -55,7 +55,11 @@ function trackMoon(position) {
 }
 
 export function trackMoons(input) {
-  const moons = input.map(coordinates => trackMoon(coordinates));
+  let moons;
+  const start = () => {
+    moons = input.map(coordinates => trackMoon([...coordinates]));
+  };
+  start();
 
   function step(times = 1) {
     loop(times, () => {
@@ -80,6 +84,7 @@ export function trackMoons(input) {
   return {
     getState,
     getTotalEnergy,
+    restart: start,
     step
   };
 }
