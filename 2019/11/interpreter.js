@@ -111,7 +111,9 @@ export const interpreter = (...memory) => {
 
           state.output = value;
           state.pointer += 2;
-          state.listeners.forEach(next => next(value));
+          setTimeout(() => {
+            state.listeners.forEach(next => next(value));
+          }, 0);
           break;
         }
 
@@ -172,7 +174,9 @@ export const interpreter = (...memory) => {
         case 99: {
           state.continue = false;
           state.complete = true;
-          state.onComplete.forEach(next => next(state.output));
+          setTimeout(() => {
+            state.onComplete.forEach(next => next(state.output));
+          }, 0);
           break;
         }
 

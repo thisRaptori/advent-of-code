@@ -64,7 +64,7 @@ export function runRobot(memory) {
     output.push(data);
 
     if (output.length === 2) {
-      setTimeout(handleStep, 0);
+      handleStep();
     }
   });
 
