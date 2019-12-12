@@ -13,6 +13,17 @@ describe("trackmoons", () => {
     expect(findRepetitions(moons)).toEqual(2772);
   });
 
+  it("should pass the second example", () => {
+    const moons = trackMoons([
+      [-8, -10, 0],
+      [5, 5, 10],
+      [2, -7, 3],
+      [9, -8, -3]
+    ]);
+
+    expect(findRepetitions(moons)).toEqual(4686774924);
+  });
+
   it("should pass with the actual input", () => {
     const moons = trackMoons([
       [6, 10, 10],
