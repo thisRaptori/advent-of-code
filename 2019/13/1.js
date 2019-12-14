@@ -3,11 +3,11 @@ import { interpreter } from "./interpreter";
 function renderId(id) {
   switch (id) {
     case 0:
-      return "⚪️";
+      return "⬛️";
     case 1:
       return "🧱";
     case 2:
-      return "⬛️";
+      return "⚪️";
     case 3:
       return "⁠🏓";
     case 4:

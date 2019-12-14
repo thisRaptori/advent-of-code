@@ -29,7 +29,7 @@ describe("update", () => {
 describe("renderFinalState", () => {
   it("should give the correct answer", async () => {
     const finalState = await renderFinalState(input);
-    expect(flatten(finalState).filter(char => char === "⬛️").length).toEqual(
+    expect(flatten(finalState).filter(char => char === "⚪️").length).toEqual(
       412
     );
   });

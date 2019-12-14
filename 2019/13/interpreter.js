@@ -111,9 +111,7 @@ export const interpreter = (...memory) => {
 
           state.output = value;
           state.pointer += 2;
-          setTimeout(() => {
-            state.listeners.forEach(next => next(value));
-          }, 0);
+          state.listeners.forEach(next => next(value));
           break;
         }
 
@@ -207,6 +205,9 @@ export const interpreter = (...memory) => {
       } else {
         state.onComplete.push(listener);
       }
+    },
+    staticInput: newInput => {
+      state.input = newInput;
     }
   };
 };
