@@ -14,7 +14,7 @@ const opposite = {
   [EAST]: WEST
 };
 
-const next = {
+export const next = {
   [NORTH]: (x, y) => [x, y + 1],
   [SOUTH]: (x, y) => [x, y - 1],
   [WEST]: (x, y) => [x - 1, y],
